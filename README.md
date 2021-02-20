@@ -15,3 +15,9 @@ interest.c: Interest Calculator
 max.c: Finding maximum value of int
 
 min.c: Finding minimum value of int
+
+limits.c: Finding minimum and maximum value of other data types
+
+## Week 2:
+
+grades.c: Grade classification for final average mark
