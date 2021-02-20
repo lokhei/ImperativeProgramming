@@ -11,6 +11,7 @@ ifdef Windows
 
 %: %.c
 	clang -std=c11 -Wall -pedantic -g $@.c -o $@.exe
+	./%
 
 # For Linux/MacOS, include the advanced debugging options
 else
@@ -18,5 +19,6 @@ else
 %: %.c
 	clang -std=c11 -Wall -pedantic -g $@.c -o $@ \
 	    -fsanitize=undefined -fsanitize=address
+	./$@
 
 endif
