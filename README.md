@@ -10,8 +10,8 @@ hello.c: Hello World Program
 
 square.c: Squaring Program
 
-interest.c: Interes Calculator
+interest.c: Interest Calculator
 
-max.c: finding maximum value of int
+max.c: Finding maximum value of int
 
-min.c: finding minimum value of int
+min.c: Finding minimum value of int
