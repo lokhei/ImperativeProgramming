@@ -12,31 +12,31 @@ enum { G1, G21, G22, G3, Fail, Invalid };
 // Convert a mark string into an integer.  Return -1 if it is not valid.
 // The argument n is the length of the string (normally 1 or 2 or 3).
 int convert(int n, const char mark[]) {
-    // check in correct range
-    if (n>3 || atoi(mark) >100) return -1;
-    // check each digit is a number and check against extra padding of 0's
+    // check each digit is a number
     for (int i=0; i<n; i++) {
-        int num1 = mark[i];
-        if (!isdigit(num1) || (i>0 && mark[i] != '0' && mark[i-1] == '0')) return -1;
+        if (!isdigit(mark[i])) return -1;
     }
-    return atoi(mark); 
+    int grade = atoi(mark);
+    // check in correct range and check against extra padding of 0's
+    if (grade < 0 || grade > 100 || (n>1 && mark[0] == '0')) return -1;
+    return grade;
 }
 
 
 // Convert a mark integer into a grade.
 int grade(int m) {
-    int grade;
-    if (m < 0) grade = Invalid;
-    else if (m < 40) grade = Fail;
-    else if (m < 50) grade = G3;
-    else if (m < 60) grade = G22;
-    else if (m < 70) grade = G21;
-    else if (m < 101) grade = G1;
-    else grade = Invalid;
-    return grade;
+    int class;
+    if (m < 0) class = Invalid;
+    else if (m < 40) class = Fail;
+    else if (m < 50) class = G3;
+    else if (m < 60) class = G22;
+    else if (m < 70) class = G21;
+    else if (m < 101) class = G1;
+    else class = Invalid;
+    return class;
 }
 
-// ---------------------------------------- -------------------------------------
+// -----------------------------------------------------------------------------
 // User interface and testing.
 
 // Print out a grade.

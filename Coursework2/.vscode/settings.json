@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "string.h": "c"
+    },
+    "python.linting.pylintEnabled": false,
+    "python.linting.mypyEnabled": true,
+    "python.linting.enabled": false
+}

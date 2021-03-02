@@ -1,0 +1,1 @@
+I have built a directed network. If ./network is entered, the tests are run. Otherwise, if too many arguments are given, but in the wrong format, the user is prompted. If the user entered correctly, the network and the nodes are printed out. The numbe, sum, mean of nodes and largest node is also printed out. I also did some tests.
