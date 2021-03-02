@@ -26,7 +26,9 @@ grades.c: Grade classification for final average mark
 ## Coursework 1
 
 triangle.c: classifies triangle types (scalene, isosceles or equilateral)
-can be run using `./triangle 3 4 5`
+
+(Can be run using `./triangle 3 4 5`)
 
 visualise.c: visualises bit structure of the char and int datatypes
-can be run using `./visualise char 7`
+
+(Can be run using `./visualise char 7`)
