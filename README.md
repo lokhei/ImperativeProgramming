@@ -32,3 +32,12 @@ triangle.c: classifies triangle types (scalene, isosceles or equilateral)
 visualise.c: visualises bit structure of the char and int datatypes
 
 (Can be run using `./visualise char 7`)
+
+
+## Week 5:
+
+strings.c: custom versions of the string functions in the standard library
+
+bits.c: converts a number into either a 32 bit binary or an 8-hex-digit-string
+
+(Can be run using `./bits -h n` or `./bits -b n`)

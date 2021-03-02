@@ -21,28 +21,26 @@ void copy(char t[], const char s[]) {
 
 // Compare two strings, returning negative, zero or positive (like strcmp).
 int compare(const char s[], const char t[]) {
-    int i;
-    for (i = 0; s[i] != '\0'; i++){
-        if (s[i] > t[i] || t[i]== '\0') return 1;
-        else if (s[i] < t[i]) return -1;
-    }
-    if(t[i]=='\0') return 0;
-    else return -1;
+    if (s < t) return -1;
+    else if (s > t) return 1;
+    else return 0;
 }
 
 // Join string s to the end of string t (like strcat).
 void append(char t[], const char s[]) {
-    int i, j;
-    for (i = 0; t[i] != '\0'; i++);
-    for (j = 0; s[i] != '\0'; i++, j++){
-        t[i] = s[j];
+    int i, tlen = length(t);
+    for (i = 0; s[i] != '\0'; i++){
+        t[tlen+i] = s[i];
     }
-    t[i] = '\0';        
+    t[tlen+i] = '\0';        
 }
 
 // Find the (first) position of s in t, or return -1 (like strstr).
 int find(const char t[], const char s[]) {
-    return 0;
+     for (int i = 0; i < length(t); i++) {
+        if (t[i] == *s) return i;
+    }
+    return -1;
 }
 
 // -----------------------------------------------------------------------------
@@ -123,6 +121,6 @@ int main() {
     testCompare();
     testAppend();
     testFind();
-    printf("Tests all pass.");
+    printf("Tests all pass\n");
     return 0;
 }
