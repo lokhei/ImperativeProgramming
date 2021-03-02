@@ -72,7 +72,7 @@ bool set(list *xs, item x);
 void insertAfter(list *xs, item x);
 
 // Inserts an item before the current item and makes it the current item.
-// If insertAfter is called while no item is selected then the function inserts
+// If insertBefore is called while no item is selected then the function inserts
 // the item at the end of the list after the last item.
 void insertBefore(list *xs, item x);
 

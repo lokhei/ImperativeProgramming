@@ -46,3 +46,10 @@ bits.c: converts a number into either a 32 bit binary or an 8-hex-digit-string
 ## Week 6:
 
 text.c: functions which handle strings, written as text objects
+
+
+## Coursework 2
+
+list.c: resuable library module for lists, implemented via circular doubly-linked lists with one sentinel node
+
+network.c: representation of directed graph given an input string, and network operations 

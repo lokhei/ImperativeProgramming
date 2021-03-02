@@ -15,8 +15,8 @@ typedef struct node{
 typedef struct network{
 	int numofnodes;
 	struct node **nodes;
-
 }network;
+
 
 //create a node
 node *newNode() {
@@ -31,7 +31,6 @@ network *newnetwork (int numofnodes){
 	network *n = malloc(sizeof(network));
 	n -> numofnodes = numofnodes;
 	n -> nodes = malloc(sizeof(node) * numofnodes);
-
 	for (int i = 0; i < numofnodes ; i ++){
 		n -> nodes[i] = newNode();
 	}
@@ -142,7 +141,7 @@ void freeing(network *n){
 	free (n);
 }
 
-///////////////////TESTS////////////////////////////////////////////////////////////////////////////////////////
+/*------------------------------------TESTS-------------------------------------------------------*/
 
 //assert function
 void assert(int line, bool b) {
@@ -150,7 +149,6 @@ void assert(int line, bool b) {
   printf("The test on line %d fails.\n", line);
   exit(1);
 }
-
 
 void *build() {
 	int num = 10;
@@ -207,12 +205,7 @@ void test(){
 
 
 
-////////////////////////////////////////////MAIN/////////////////////////////////////////////////////////////////
-
-
-
-
-
+/*-------------------------------------User interface -----------------------------------------*/
 int main(int n, char *args[n]) {
 	if (n == 1) test();
 	else if (n != 2 ){

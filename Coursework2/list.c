@@ -1,12 +1,9 @@
 // Implementation of list module.
 #include "list.h"
-
-// ---------- Add headers here ----------
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
-
 
 // Each node in a doubly linked list is stored in this structure. The user of the
 // module does not have any knowledge of nodes.
@@ -28,21 +25,21 @@ list *newList(item e){
   list *l = malloc(sizeof(list));
   node * sentinelNode = malloc(sizeof(node));
   sentinelNode -> x = e;
-  l -> current = sentinelNode;
-  l -> none = sentinelNode;
   sentinelNode -> next = sentinelNode;
   sentinelNode -> back = sentinelNode;
+  l -> current = sentinelNode;
+  l -> none = sentinelNode;
   return l;
 }
 
 void freeList(list *xs){
-  node *currentt = xs -> none -> next;
-  while (currentt != xs -> none){
-    node *next = currentt -> next;
-    free (currentt);
-    currentt = next;
+  node *curr = xs -> none -> next;
+  while (curr != xs -> none){
+    node *next = curr -> next;
+    free (curr);
+    curr = next;
   }
-  free (xs -> current);
+  free (xs -> none);
   free (xs);
 }
 
@@ -61,7 +58,7 @@ bool none(list *xs){
 }
 
 bool after(list *xs){
-  if (xs -> current == xs -> none) return false;
+  if (none(xs)) return false;
   else{
     xs -> current = xs -> current -> next;
     return true;
@@ -69,7 +66,7 @@ bool after(list *xs){
 }
 
 bool before(list *xs){
-  if (xs -> current == xs -> none) return false;
+  if (none(xs)) return false;
   else{
     xs -> current = xs -> current -> back;
     return true;
@@ -77,11 +74,14 @@ bool before(list *xs){
 }
 
 item get(list *xs){
-  return xs -> current -> x;
+  if (none(xs)) return xs -> none -> x;
+  else{
+    return xs -> current -> x;
+  }
 }
 
 bool set(list *xs, item x){
-  if (xs -> current == xs -> none) return false;
+  if (none(xs)) return false;
   else xs -> current -> x = x;
   return true;
 }
@@ -89,29 +89,47 @@ bool set(list *xs, item x){
 void insertAfter(list *xs, item x){
   node *newnode = malloc(sizeof(node));
   newnode -> x = x;
-  node * a = xs -> current;
-  node * b = xs -> current -> next;
-  a -> next = newnode;
-  b -> back = newnode;
-  newnode -> next = b;
-  newnode -> back = a;
-  xs -> current = newnode;
+  node *curr = xs -> current;
+  node *next = xs -> current -> next;
+  node *first = xs -> none -> next;
+  if (none(xs)){
+    newnode -> next = first;
+    first -> back = newnode;
+    xs -> none -> next = newnode;
+    newnode -> back = xs -> none;
+    xs -> current = newnode;
+  }else{
+    curr -> next = newnode;
+    next -> back = newnode;
+    newnode -> next = next;
+    newnode -> back = curr;
+    xs -> current = newnode;
+  }
 }
 
 void insertBefore(list *xs, item x){
   node *newnode = malloc(sizeof(node));
   newnode -> x = x;
-  node * a = xs -> current;
-  node * b = xs -> current -> back;
-  a -> back = newnode;
-  b -> next = newnode;
-  newnode -> next = a;
-  newnode -> back = b;
-  xs -> current = newnode;
+  node * curr = xs -> current;
+  node *prev = xs -> current -> back;
+  node *last = xs -> none -> back;
+  if (none(xs)){
+    newnode -> next = xs -> none;
+    xs -> none -> back = newnode;
+    newnode -> back = last;
+    last -> next = newnode;
+    xs -> current = newnode;
+  }else{
+    curr -> back = newnode;
+    prev -> next = newnode;
+    newnode -> next = curr;
+    newnode -> back = prev;
+    xs -> current = newnode;
+  }
 }
 
 bool deleteToAfter(list *xs){
-  if (xs -> current == xs -> none) return false;
+  if (none(xs)) return false;
   else{
     node * a = xs -> current -> back;
     node * b = xs -> current -> next;
@@ -125,7 +143,7 @@ bool deleteToAfter(list *xs){
 }
 
 bool deleteToBefore(list *xs){
-  if (xs -> current == xs -> none) return false;
+  if (none(xs)) return false;
   else{
     node * a = xs -> current -> back;
     node * b = xs -> current -> next;
