@@ -9,7 +9,7 @@
 // Store text using a dynamically allocated character array with a given
 // capacity. Use strlen to find the length of the string contained in the array.
 struct text {
-    int length, capacity;
+    int capacity;
     char *content;
 };
 
@@ -18,7 +18,7 @@ text *newText(char *s) {
   text *t = malloc(sizeof(text));
   t -> capacity = 24;
   t -> content = malloc(strlen(s)+1);
-  while (t->capacity < strlen(s)+1) t->capacity = t -> capacity * 2;
+  while (t->capacity < strlen(s)+1) t->capacity *= 2;
   strcpy(t -> content, s);
   return t;
 }
@@ -51,16 +51,14 @@ text *copy(text *t) {
 }
 
 int compare(text *t1, text *t2) {
-  if (strcmp((t1 -> content), (t2 -> content)) == 0) return 0;
-  else if (strcmp((t1 -> content), (t2 -> content)) > 0) return 1;
-  else return -1;
+  return strcmp((t1 -> content), (t2 -> content));
 }
 
 void append(text *t1, text *t2) {
   int n = strlen(t1 -> content) + strlen(t2 -> content) +1;
   t1 -> capacity = 24;
   while(n > (t1 -> capacity)){
-    t1 -> capacity = t1 -> capacity *2;
+    t1 -> capacity *=  2;
   }
   t1 -> content = realloc(t1 -> content, n);
   strcat(t1 -> content, t2 -> content);

@@ -41,3 +41,8 @@ strings.c: custom versions of the string functions in the standard library
 bits.c: converts a number into either a 32 bit binary or an 8-hex-digit-string
 
 (Can be run using `./bits -h n` or `./bits -b n`)
+
+
+## Week 6:
+
+text.c: functions which handle strings, written as text objects
