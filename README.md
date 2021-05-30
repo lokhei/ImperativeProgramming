@@ -59,16 +59,18 @@ network.c: representation of directed graph given an input string, and network o
 
 uppercase.c: reads in a file as input, convertting all letters into upper case, and outputs into new file
 
-(can be run using `.uppercase infile outfile`)
+(can be run using `./uppercase infile outfile`)
 
 hexview.c: reads in file as input and prints the bytes on the standard output in hex
 
-(can be run using `.hexview infile`)
+(can be run using `./hexview infile`)
 
 
 ## Coursework 3
 sketch.c: reads in and visualises .sk files
-(can be run using `.sketch sketchfile"`)
+
+(can be run using `./sketch sketchfile"`)
 
 converter.c: converts a pgm file into a sketch file
-(can be run using `.converter pgmfile"`)
+
+(can be run using `./converter pgmfile"`)
