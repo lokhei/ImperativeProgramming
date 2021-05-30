@@ -1,7 +1,11 @@
 #include <stdio.h>
 
-int main() {
-    FILE *in = fopen("in.txt", "rb");
+int main(int n, char *args[]) {
+    if (n != 2){
+        printf("Please provide file path\n");
+        return -1;
+    }
+    FILE *in = fopen(args[1], "rb");
     int count = 0;
 
     unsigned char ch = fgetc(in);

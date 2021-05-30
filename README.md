@@ -53,3 +53,14 @@ text.c: functions which handle strings, written as text objects
 list.c: resuable library module for lists, implemented via circular doubly-linked lists with one sentinel node
 
 network.c: representation of directed graph given an input string, and network operations 
+
+
+## Week 10
+
+uppercase.c: reads in a file as input, convertting all letters into upper case, and outputs into new file
+
+(can be run using `.uppercase "infile" "outfile"`)
+
+hexview.c: reads in file as input and prints the bytes on the standard output in hex
+
+(can be run using `.hexview "infile"`)
