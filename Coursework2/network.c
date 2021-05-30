@@ -213,12 +213,12 @@ int main(int n, char *args[n]) {
 		return 1;
 	}
 	else{
-		for (int i = 0; i < strlen(args[1]); i++){
-				if ((args[1][i] < 48 ) && (args[1][i] > 57) && (args[1][i] != 44) && (args[1][i] != 45)){
-					printf("Please input in this format:./network 1-2,1-3,2-4.\n");
-					return 1;
-				}
-			}
+		// for (int i = 0; i < strlen(args[1]); i++){
+		// 		if ((args[1][i] < 48 ) && (args[1][i] > 57) && (args[1][i] != 44) && (args[1][i] != 45)){
+		// 			printf("Please input in this format:./network 1-2,1-3,2-4.\n");
+		// 			return 1;
+		// 		}
+		// 	}
 		int nodenum = numnodes(args[1]);
 		network *m = newnetwork(nodenum);
 		for (int i = 0; i < strlen(args[1] -1); i++){
